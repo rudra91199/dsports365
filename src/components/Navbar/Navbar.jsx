@@ -3,6 +3,10 @@ import "./navbar.css";
 import { IoSearch } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
+import CricketDropdown from "./CricketDropdown";
+import FootballDropdown from "./FootballDropdown";
+import OtherSportsDropdown from "./OtherSportsDropdown";
+import Search from "./Search";
 
 const Navbar = () => {
   return (
@@ -19,63 +23,11 @@ const Navbar = () => {
             নিউজ
           </NavLink>
 
-          <div className="dropdown cricket-dropdown">
-            <NavLink
-              to={"/cricket"}
-              className={({ isActive }) =>
-                `nav-cricket ${isActive && "nav-active"}`
-              }
-            >
-              ক্রিকেট <IoIosArrowDown />
-            </NavLink>
+          <CricketDropdown />
 
-            <div className={`nav-dropdown cricket-dropdown-content`}>
-              <div className="subcategories">
-                <NavLink to={"/football"}>আন্তর্জাতিক </NavLink>
-                <NavLink to={"/football"}>জাতীয় </NavLink>
-              </div>
-              <div className="suggested-news"></div>
-            </div>
-          </div>
+          <FootballDropdown />
 
-          <div className="dropdown football-dropdown">
-            <NavLink
-              to={"/football"}
-              className={({ isActive }) =>
-                `nav-cricket ${isActive && "nav-active"}`
-              }
-            >
-              ফুটবল <IoIosArrowDown />
-            </NavLink>
-
-            <div className={`nav-dropdown football-dropdown-content`}>
-              <div className="subcategories">
-                <NavLink to={"/football"}>আন্তর্জাতিক </NavLink>
-                <NavLink to={"/football"}>জাতীয় </NavLink>
-              </div>
-              <div className="suggested-news"></div>
-            </div>
-          </div>
-
-          <div className="dropdown other-sports-dropdown">
-            <NavLink
-              to={"/other-sports"}
-              className={({ isActive }) =>
-                `nav-cricket ${isActive && "nav-active"}`
-              }
-            >
-              আরও খেলা <IoIosArrowDown />
-            </NavLink>
-
-            <div className={`nav-dropdown other-sports-dropdown-content`}>
-              <div className="subcategories">
-                <NavLink to={"/football"}>টেনিস </NavLink>
-                <NavLink to={"/football"}>অ্যাথলেটিক্স </NavLink>
-                <NavLink to={"/football"}>অন্যান্য </NavLink>
-              </div>
-              <div className="suggested-news"></div>
-            </div>
-          </div>
+          <OtherSportsDropdown />
 
           <NavLink
             to={"/editorial"}
@@ -89,7 +41,7 @@ const Navbar = () => {
           >
             সাক্ষাৎকার
           </NavLink>
-          <IoSearch />
+          <Search/>
         </nav>
       </div>
     </header>
