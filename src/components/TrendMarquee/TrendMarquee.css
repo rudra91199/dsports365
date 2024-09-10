@@ -1,0 +1,10 @@
+.trendMarquee{
+    margin-top: 40px;
+}
+
+.trendMarquee span:first-child{
+background-color: black;
+color: white;
+padding: 5px 10px;
+margin-left: 10px;
+}
