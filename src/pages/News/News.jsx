@@ -1,8 +1,11 @@
+import TrendingPost from '../../components/TrendingPost/TrendingPost'
 import './news.css'
 
 const News = () => {
   return (
-    <div className='news'></div>
+    <div className='news'>
+      <TrendingPost/>
+    </div>
   )
 }
 
