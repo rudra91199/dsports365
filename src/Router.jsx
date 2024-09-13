@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./layout/Layout";
 import News from "./pages/News/News";
+import SingleNews from "./pages/singleNews/SingleNews";
 
 export const router = createBrowserRouter([
     {
@@ -10,6 +11,10 @@ export const router = createBrowserRouter([
             {
                 path:"/",
                 element:<News/>
+            },
+            {
+                path:"/single-news",
+                element:<SingleNews/>
             }
         ]
     }
