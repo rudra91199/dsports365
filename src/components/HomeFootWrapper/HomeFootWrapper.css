@@ -1,0 +1,16 @@
+.homeFootWrapper{
+    margin-bottom: 30px;
+}
+
+.homeFootWrapper .homeCatNav{
+    border-bottom: 2px solid black;
+    margin-bottom: 30px;
+}
+
+.homeFootWrapper .homeCatNav p:first-child{
+    background-color: black;
+}
+
+.homeFootWrapper .homeCatNav p:hover{
+    color: rgb(0, 0, 0);
+}

@@ -1,0 +1,33 @@
+.homeFootPost{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.homeFootPost img{
+    width: 30%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.homeFootPostContent h2{
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.homeFootPostContent p:nth-child(2){
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.homeFootPostContent p:nth-child(2) span{
+    color: rgb(92, 91, 91);
+    font-weight: 600;
+}
+
+.homeFootPostContent p:last-child{
+    color: rgb(92, 91, 91);
+font-size: 14px;
+}

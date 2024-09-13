@@ -1,14 +1,14 @@
 import './trendingPost.css'
 import trending1 from '../../assets/images/Trending Image/lahoreAttack.jpg'
-import trending2 from '../../assets/images/Trending Image/ShahidAfridi.jpg'
+import trending2 from '../../assets/images/Trending Image/Neymar.jpg'
 import trending3 from '../../assets/images/Trending Image/ShaunTait.jpg'
 import trending4 from '../../assets/images/Trending Image/shakib.jpg'
 
 const TrendingPost = () => {
     return (
-        <div className='trendingPost container'>
+        <div className='trendingPost'>
             <div>
-                <img src={trending1} alt="" />
+                <img src={trending1} className='trendPostImage' alt="" />
                 <div className='trendPost-content'>
                     <span>ক্রিকেট</span>
                     <h2>লাহোর ২০০৯: ক্রিকেটের রক্তাক্ত প্রান্তর</h2>
@@ -16,7 +16,7 @@ const TrendingPost = () => {
                 </div>
             </div>
             <div>
-                <img src={trending2} alt="" />
+                <img src={trending2} className='trendPostImage' alt="" />
                 <div className='trendPost-content'>
                     <span>ফুটবল</span>
                     <h2>বার্সেলোনায় ফিরেই ছাড়বেন নেইমার!
@@ -24,7 +24,7 @@ const TrendingPost = () => {
                 </div>
             </div>
             <div>
-                <img src={trending3} alt="" />
+                <img src={trending3}  className='trendPostImage' alt="" />
                 <div className='trendPost-content'>
                     <span>ক্রিকেট</span>
                     <h2>হঠাৎ ছাই হওয়া এক নক্ষত্র
@@ -32,7 +32,7 @@ const TrendingPost = () => {
                 </div>
             </div>
             <div>
-                <img src={trending4} alt="" />
+                <img src={trending4}  className='trendPostImage' alt="" />
                 <div className='trendPost-content'>
                     <span>ক্রিকেট</span>
                     <h2>স্মার্টেস্ট ক্রিকেটার এভার

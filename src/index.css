@@ -16,3 +16,16 @@ a {
     text-decoration: none;
     color: black;
 }
+
+.homeWrapper{
+    display: flex;
+    gap: 30px;
+}
+
+.leftWrapper{
+    width: 70%;
+}
+
+.rightWrapper{
+    width: 30%;
+}
