@@ -21,6 +21,7 @@
 
 .moreSportsFirst .home-cricket-content h2{
 font-size: 22px;
+margin-top: 20px;
 }
 
 .moreSportsRemain{
@@ -30,7 +31,7 @@ font-size: 22px;
 }
 
 .moreSportsRemain img{
-width: 35%;
+width: 30%;
 height: 100%;
 object-fit: cover;
 }

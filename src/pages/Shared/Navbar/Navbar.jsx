@@ -1,8 +1,5 @@
 import { NavLink } from "react-router-dom";
 import "./navbar.css";
-import { IoSearch } from "react-icons/io5";
-import { IoIosArrowDown } from "react-icons/io";
-import { useState } from "react";
 import CricketDropdown from "./CricketDropdown";
 import FootballDropdown from "./FootballDropdown";
 import OtherSportsDropdown from "./OtherSportsDropdown";
