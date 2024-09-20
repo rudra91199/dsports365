@@ -37,8 +37,9 @@
 
 .editor-pick img,
 .popular-post img {
-    width: 30%;
-    height: 60px;
+    width: 27%;
+    height: 65px;
+    object-fit: cover;
 }
 
 .popular-category-container div {

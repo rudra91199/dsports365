@@ -1,0 +1,96 @@
+.homeCricketContainer .rightWrapper > div:first-child {
+    border-bottom: 2px solid rgb(0, 0, 0);
+    margin-bottom: 30px;
+  }
+  
+  .homeCricketContainer .rightWrapper > div:first-child p {
+    background-color: rgb(0, 0, 0);
+    margin-right: auto;
+    width: fit-content;
+    padding: 5px 10px 2px;
+    color: white;
+  }
+  
+  .homeCricketContainer .socials > div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+  
+  .homeCricketContainer .fb-animated-content {
+    transition: opacity 0.2s ease-in-out;
+    color: rgb(57, 82, 151);
+    opacity: 0.7;
+  }
+  
+  .homeCricketContainer .insta-animated-content {
+    transition: opacity 0.2s ease-in-out;
+    background: radial-gradient(
+      circle at 30% 107%,
+      #514a01 0%,
+      #a29612 5%,
+      #b43e34 45%,
+      #97196f 60%,
+      #193998 90%
+    );
+    color: transparent;
+    width: fit-content;
+    background-clip: text;
+    opacity: 0.7;
+  }
+  
+  .homeCricketContainer .yt-animated-content {
+    transition: opacity 0.2s ease-in-out;
+    color: hsl(0, 100%, 50%);
+    opacity: 0.6;
+  }
+  
+  .fb-animated-container:hover .fb-animated-content,
+  .insta-animated-container:hover .insta-animated-content,
+  .yt-animated-container:hover .yt-animated-content {
+    opacity: 1;
+  }
+  
+  .social-icon {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 3px 2px;
+  }
+  
+  .fb-animated {
+    background-color: rgb(57, 82, 151);
+  }
+  
+  .insta-animated {
+    background: radial-gradient(
+      circle at 30% 107%,
+      #fdf497 0%,
+      #fdf497 5%,
+      #fd5949 45%,
+      #d6249f 60%,
+      #285aeb 90%
+    );
+  }
+  
+  .yt-animated {
+    background-color: rgb(255, 0, 0);
+  }
+  
+  .homeCricketContainer .rightWrapper .socials img {
+    width: 40px;
+  }
+  
+  .homeCricketContainer .rightWrapper .socials p {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .homeCricketContainer .socials div p:last-child {
+    margin-left: auto;
+    font-weight: 700;
+  }
+  

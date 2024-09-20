@@ -1,12 +1,14 @@
-import HomeCricketPost from '../HomeCricketPost/HomeCricketPost'
-import './homeCricketWrapper.css'
+import HomeCricketPost from "../HomeCricketPost/HomeCricketPost";
+import "./homeCricketWrapper.css";
+import StayConnected from "../StayConnected/StayConnected";
+import MostPopularCricket from "../MostPopularCricket/MostPopularCricket";
 
 const HomeCricketWrapper = () => {
-  return (
-    <div className='homeCricketContainer homeWrapper'>
-      <div className='leftWrapper'>
 
-        <div className='homeCatNav'>
+  return (
+    <div className="homeCricketContainer homeWrapper">
+      <div className="leftWrapper">
+        <div className="homeCatNav">
           <p>ক্রিকেট</p>
           <p>জাতীয়</p>
           <p>আন্তর্জাতিক</p>
@@ -15,10 +17,12 @@ const HomeCricketWrapper = () => {
         <HomeCricketPost />
       </div>
 
-      <div className='rightWrapper'></div>
-
+      <div className="rightWrapper">
+       <StayConnected/>
+       <MostPopularCricket/>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomeCricketWrapper
+export default HomeCricketWrapper;

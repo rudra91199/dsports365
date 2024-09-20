@@ -1,38 +1,38 @@
-.homeCricketContainer{
-    margin-top: 50px;
-    /* height: 100vh; */
+.homeCricketContainer {
+  margin-top: 50px;
+  /* height: 100vh; */
 }
 
-.homeCatNav{
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.homeCatNav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.homeCricketContainer .homeCatNav{
-    border-bottom: 2px solid  rgb(1, 133, 1);
+.homeCricketContainer .homeCatNav {
+  border-bottom: 2px solid rgb(1, 133, 1);
 }
 
-.homeCatNav p{
-    font-weight: 600;
-    color: rgba(0, 0, 0, 0.6);
-    transition: color 0.3s ease-in-out;
+.homeCatNav p {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+  transition: color 0.3s ease-in-out;
 }
 
-.homeCricketContainer .homeCatNav p:hover{
-    color: rgb(0, 160, 0);
+.homeCricketContainer .homeCatNav p:hover {
+  color: rgb(0, 160, 0);
 }
 
-.homeCatNav p:hover{
-    cursor: pointer;
+.homeCatNav p:hover {
+  cursor: pointer;
 }
 
-
-.homeCatNav p:first-child{
-background-color: rgb(1, 133, 1);
-margin-right: auto;
-width: fit-content;
-padding: 5px 10px 2px;
-color: white;
-font-weight: 400;
+.homeCatNav p:first-child {
+  background-color: rgb(1, 133, 1);
+  margin-right: auto;
+  width: fit-content;
+  padding: 5px 10px 2px;
+  color: white;
+  font-weight: 400;
 }
+

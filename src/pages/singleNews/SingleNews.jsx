@@ -7,7 +7,7 @@ const SingleNews = () => {
   const [news, setNews] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/posts/post/66e341efa4a717760795634a")
+    fetch("http://localhost:5000/api/posts/post/66ec360ce5dc6a6682caaff6")
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, []);
