@@ -1,23 +1,24 @@
-import HomeFootPost from '../HomeFootPost/HomeFootPost'
-import './homeFootWrapper.css'
+import HomeFootPost from "../HomeFootPost/HomeFootPost";
+import "./homeFootWrapper.css";
 
 const HomeFootWrapper = () => {
-    return (
-        <div className='homeFootWrapper homeWrapper'>
-            <div className='leftWrapper'>
+  return (
+    <div className="homeFootWrapper homeWrapper">
+      <div className="leftWrapper">
+        <div className="homeCatNav">
+          <p>ফুটবল</p>
+          <p>অল</p>
 
-                <div className='homeCatNav'>
-                    <p>ফুটবল</p>
-                    <p>জাতীয়</p>
-                    <p>আন্তর্জাতিক</p>
-                </div>
-
-                <HomeFootPost />
-            </div>
-
-            <div className='rightWrapper'></div>
+          <p>জাতীয়</p>
+          <p>আন্তর্জাতিক</p>
         </div>
-    )
-}
 
-export default HomeFootWrapper
+        <HomeFootPost />
+      </div>
+
+      <div className="rightWrapper"></div>
+    </div>
+  );
+};
+
+export default HomeFootWrapper;
