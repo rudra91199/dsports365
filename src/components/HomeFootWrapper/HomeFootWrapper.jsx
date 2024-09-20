@@ -8,7 +8,6 @@ const HomeFootWrapper = () => {
         <div className="homeCatNav">
           <p>ফুটবল</p>
           <p>অল</p>
-
           <p>জাতীয়</p>
           <p>আন্তর্জাতিক</p>
         </div>
