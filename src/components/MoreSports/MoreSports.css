@@ -1,37 +1,51 @@
 .moreSports {
-    margin-top: 20px;
-    /* height: 50vh; */
+  /* height: 50vh; */
 }
 
 .moreSports .homeCatNav {
-    border-bottom: 2px solid rgb(1, 133, 1);
+  border-bottom: 2px solid rgb(1, 133, 1);
 }
 
 .moreSportsPost {
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 80px);
-    gap:20px 30px;
+  margin: 30px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 80px);
+  gap: 20px 30px;
 }
 
-.moreSportsFirst{
-    grid-row: 1/5;
+.moreSportsFirst {
+  grid-row: 1/5;
 }
 
-.moreSportsFirst .home-cricket-content h2{
-font-size: 22px;
-margin-top: 20px;
+.moreSportsFirst .home-cricket-content h2 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
-.moreSportsRemain{
-    display: flex;
-    gap: 30px;
-    /* height: 70px; */
+.moreSportsFirst .home-cricket-content p:nth-child(2){
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
-.moreSportsRemain img{
-width: 30%;
-height: 100%;
-object-fit: cover;
+.moreSportsFirst .home-cricket-content p:nth-child(2) span{
+    font-weight: 400;
+}
+
+.moreSportsRemain {
+  display: flex;
+  gap: 30px;
+  /* height: 70px; */
+}
+
+.moreSportsRemain img {
+  width: 30%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.moreSportsRemain h4 {
+    font-weight: 500;
 }

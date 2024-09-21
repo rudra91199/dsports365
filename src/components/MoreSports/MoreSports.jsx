@@ -1,49 +1,100 @@
-import './moreSports.css'
-import djokovich from '../../assets/images/Trending Image/NovakDjokovic.jpg'
-import federer from '../../assets/images/Trending Image/RogerFederer2.jpg'
+import "./moreSports.css";
+import djokovich from "../../assets/images/Trending Image/NovakDjokovic.jpg";
+import federer from "../../assets/images/Trending Image/RogerFederer2.jpg";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { useState } from "react";
+import { useFetch } from "../../hooks/useFetch";
+import moment from "moment";
+import { useCleanAndTruncateText } from "../../hooks/useCleanAndTruncateText";
 
 const MoreSports = () => {
-    const postNumbers = [1, 2, 3, 4]
-    return (
-        <div className='moreSports homeWrapper'>
-            <div className='leftWrapper'>
+  const [cricketNav, setCricketNav] = useState("টেনিস");
+  const [page, setPage] = useState(0);
 
-                <div className='homeCatNav'>
-                    <p>আরো খেলা</p>
-                    <p>টেনিস</p>
-                    <p>অ্যাথলেটিক্স</p>
-                    <p>অন্যান্য</p>
-                </div>
+  const handleCatPage = (cat) => {
+    setCricketNav(cat);
+    setPage(0);
+  };
+  const { data: { result, count } = {}, isLoading } = useFetch(
+    `/posts/allNews?category=${cricketNav}&page=${page}&limit=${5}`,
+    ["othersNews", cricketNav, page]
+  );
 
-                <div className='moreSportsPost'>
-                    <div className='moreSportsFirst'>
-                        <div className='image-container'>
-                            <img src={djokovich} alt="" />
-                            <span>টেনিস</span>
-                        </div>
 
-                        <div className='home-cricket-content'>
-                            <h2>বেলগ্রেডের রাজা, মেলবোর্নের মহারাজা</h2>
-                            <p>মাহবুব হাসান তন্ময় - <span>Mar 2 - 8.00 PM</span></p>
-                            <p>শুভ্র শহরের দেশ সার্বিয়া। শ্বেত তুষারে রাজধানী বেলগ্রেডও এক প্রকার আচ্ছন্নই থাকে। অদ্ভুত ধরনের এক নিস্তব্ধতায় যেন সাদা চাদরে মুড়ে থাকে পুরো শহরবাসী। ব্যস্ততা রয়েছে, তবে তা প্রায় শব্দহীন।</p>
-                        </div>
-                    </div>
-                    {postNumbers.map(postNumbers=>(
-                        <div className='moreSportsRemain'>
-                            <img src={federer} alt="" />
-                            <div>
-                                <h4>শিল্প বিপ্লবের অবসান</h4>
-                                <p>September 18, 2024</p>
-                            </div>
-                        </div>
-                    ))}
+  return (
+    <div className="moreSports homeWrapper">
+      <div className="leftWrapper">
+        <div className="homeCatNav">
+          <p>আরো খেলা</p>
 
-                </div>
-            </div>
+          <p
+            onClick={() => handleCatPage("টেনিস")}
+            className={`${cricketNav == "টেনিস" && "selected"}`}
+          >
+            টেনিস
+          </p>
 
-            <div className='rightWrapper'></div>
+          <p
+            onClick={() => handleCatPage("অ্যাথলেটিক্স")}
+            className={`${cricketNav == "অ্যাথলেটিক্স" && "selected"}`}
+          >
+            অ্যাথলেটিক্স
+          </p>
+          <p
+            onClick={() => handleCatPage("অন্যান্য খেলা")}
+            className={`${cricketNav == "অন্যান্য খেলা" && "selected"}`}
+          >
+            অন্যান্য
+          </p>
         </div>
-    )
-}
 
-export default MoreSports
+        <div className="moreSportsPost">
+          {result?.slice(0, 1).map((data) => (
+            <div className="moreSportsFirst">
+              <div className="image-container">
+                <img src={data?.image.url} alt="" />
+                <span>টেনিস</span>
+              </div>
+
+              <div className="home-cricket-content">
+                <h2>{data.title.slice(0, 60) + "..."}</h2>
+                <p>
+                  {data.writer.name} -{" "}
+                  <span>{moment(data.createdAt).format("ll")}</span>
+                </p>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: useCleanAndTruncateText(data.desc || "", 180),
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+          {result?.slice(1, 5).map((data, i) => (
+            <div className="moreSportsRemain" key={i}>
+              <img src={data?.image.url} alt="" />
+              <div>
+                <h4>{data?.title.slice(0, 60) + "..."}</h4>
+                <p>{moment(data?.createdAt).format("ll")}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <button disabled={page == 0} onClick={() => setPage(page - 1)}>
+          <IoIosArrowBack />
+        </button>
+        <button
+          disabled={(page + 1) * 6 > count}
+          onClick={() => setPage(page + 1)}
+        >
+          <IoIosArrowForward />
+        </button>
+      </div>
+
+      <div className="rightWrapper"></div>
+    </div>
+  );
+};
+
+export default MoreSports;

@@ -13,8 +13,8 @@ const News = () => {
       <TrendingPost/>
       <HomeCricketWrapper/>
       <HomeFootWrapper/>
-      <LatestNews/>
       <MoreSports/>
+      <LatestNews/>
     </div>
   )
 }

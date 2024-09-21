@@ -19,8 +19,8 @@
   transition: color 0.3s ease-in-out;
 }
 
-.homeCricketContainer .homeCatNav p:hover {
-  color: rgb(0, 160, 0);
+.homeCricketContainer .homeCatNav p:hover,.selected {
+  color: rgb(0, 160, 0) !important;
 }
 
 .homeCatNav p:hover {
@@ -35,4 +35,5 @@
   color: white;
   font-weight: 400;
 }
+
 

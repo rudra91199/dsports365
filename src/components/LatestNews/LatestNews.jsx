@@ -1,41 +1,75 @@
-import './latestNews.css'
-import latest from '../../assets/images/Trending Image/Neymar.jpg'
+import "./latestNews.css";
+import latest from "../../assets/images/Trending Image/Neymar.jpg";
+import { useState } from "react";
+import { useFetch } from "../../hooks/useFetch";
+import moment from "moment";
+import { useCleanAndTruncateText } from "../../hooks/useCleanAndTruncateText";
+import ReactPaginate from "react-paginate";
 
 const LatestNews = () => {
-    const postNumbers = [1, 2, 3, 4, 5, 6, 7, 8]
-    return (
-        <div className='latestNewsWrapper homeWrapper'>
-            <div className='leftWrapper'>
+  const [cricketNav, setCricketNav] = useState("");
+  const [page, setPage] = useState(0);
 
-                <div className='homeCatNav'>
-                    <p>সর্বশেষ সংবাদ</p>
-                </div>
+  const { data: { result, count } = {}, isLoading } = useFetch(
+    `/posts/allNews?exclude=${"সাক্ষাৎকার"}&page=${page}&limit=${8}`,
+    ["recentNews", cricketNav, page]
+  );
 
-                <div className='latestPostContainer'>
-                    {postNumbers.map(postNumbers =>
-                        
-                            <div className='home-cric-two-post'>
+  const totalPages = Math.ceil(count / 8);
 
-                                <div className='image-container'>
-                                    <img src={latest} alt="" />
-                                    <span>ক্রিকেট</span>
-                                </div>
+  const pageNumbers = Array.from({ length: totalPages }, (_, index) => index);
 
-                                <div className='home-cricket-content'>
-                                    <h2>লাহোর ২০০৯: ক্রিকেটের রক্তাক্ত প্রান্তর!</h2>
-                                    <p>দেবব্রত মুখার্জী - <span>Mar 2 - 8.00 PM</span></p>
-                                    <p>করাচিতে আগের টেস্টে ডাবল সেঞ্চুরি করেছেন। লাহোরেও আগের দিন আরেকটা ডাবল সেঞ্চুরি করেছেন। রানের বন্যার মধ্যে আছেন। ফলে …</p>
-                                </div>
-                            </div>
-                        
-                    )}
-                </div>
+  const handlePageClick = (event) => {
+    setPage(event.selected);
+  };
 
-            </div>
+  console.log(page);
 
-            <div className='rightWrapper'></div>
+  return (
+    <div className="latestNewsWrapper homeWrapper">
+      <div className="leftWrapper">
+        <div className="homeCatNav">
+          <p>সর্বশেষ সংবাদ</p>
         </div>
-    )
-}
 
-export default LatestNews
+        <div className="latestPostContainer">
+          {result?.map((data) => (
+            <div className="home-cric-two-post">
+              <div className="image-container">
+                <img src={data.image.url} alt="" />
+                <span>{data.category}</span>
+              </div>
+
+              <div className="home-cricket-content">
+                <h2>{data.title}</h2>
+                <p>
+                  {data.writer.name} -{" "}
+                  <span>{moment(data?.createdAt).format("lll")}</span>
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* {pageNumbers.map((postNumber, i) => (
+          <span className="pagination-number" onClick={() => setPage(i)}>
+            {i + 1}
+          </span>
+        ))} */}
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel=">"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={1}
+          pageCount={totalPages}
+          previousLabel="<"
+          renderOnZeroPageCount={null}
+        />
+      </div>
+
+      <div className="rightWrapper"></div>
+    </div>
+  );
+};
+
+export default LatestNews;

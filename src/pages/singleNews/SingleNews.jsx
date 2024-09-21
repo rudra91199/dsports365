@@ -7,10 +7,12 @@ const SingleNews = () => {
   const [news, setNews] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/posts/post/66ec360ce5dc6a6682caaff6")
+    fetch("http://localhost:5000/api/posts/post/66ec2af3e5dc6a6682caaff4")
       .then((res) => res.json())
       .then((data) => setNews(data));
   }, []);
+
+  console.log(news)
 
   const date = news.createdAt && new Date(news.createdAt);
 

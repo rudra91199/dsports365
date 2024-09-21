@@ -22,10 +22,49 @@ a {
     gap: 30px;
 }
 
+.image-container{
+    
+}
+
 .leftWrapper{
     width: 70%;
+    margin-bottom: 40px;
 }
 
 .rightWrapper{
     width: 30%;
+}
+
+.leftWrapper button:nth-child(3), .leftWrapper button:nth-child(4){
+    padding: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.8);
+    border-radius: 3px;
+    color: rgba(128, 128, 128, 0.8);
+    margin-right: 5px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    display: inline-flex;
+}
+
+.leftWrapper button:nth-child(3):hover, .leftWrapper button:nth-child(4):hover{
+    border: 1px solid  rgb(255, 45, 7);
+    background-color:  rgb(255, 59, 25);
+    color: white;
+}
+
+.leftWrapper button:nth-child(3):disabled,.leftWrapper button:nth-child(4):disabled{
+    pointer-events: none;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    color: rgba(128, 128, 128, 0.5);
+}
+
+.leftWrapper .pagination-number{
+    padding: 5px 10px 3px;
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    border-radius: 3px;
+    color: rgba(128, 128, 128, 0.7);
+    margin-right: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
 }
