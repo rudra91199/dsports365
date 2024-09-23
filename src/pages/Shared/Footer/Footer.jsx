@@ -4,16 +4,26 @@ import trending3 from "../../../assets/images/Trending Image/ShaunTait.jpg";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 import { useFetch } from "../../../hooks/useFetch";
+import moment from "moment";
+import { useIncreaseCount } from "../../../hooks/useIncreaseCount";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const postNumbers = [1, 2, 3];
 
-  const { data: { result } = {}, isLoading } = useFetch(
+  const navigate = useNavigate()
+
+  const { data: { counts } = {}, isLoading } = useFetch(
     "posts/getNewsCountByCategory",
     ["newsCounts"]
   );
 
-  console.log(result);
+  const { data: { result } = {} } = useFetch(
+    `posts/getPopularNews?limit=${3}`,
+    ["popularNews"]
+  );
+
+  console.log(counts);
 
   return (
     <div className="footer-container">
@@ -33,12 +43,20 @@ const Footer = () => {
         <div className="popular-posts-container">
           <h3>Popular Posts</h3>
 
-          {postNumbers.map((postNumber) => (
-            <div className="popular-post">
-              <img src={trending3} alt="" />
+          {result?.map((data) => (
+            <div
+              className="popular-post"
+              onClick={() => {
+                useIncreaseCount(data?._id, data?.count);
+                navigate(`/news/${data?.slug}`, {
+                  state: data?._id,
+                });
+              }}
+            >
+              <img src={data?.image.url} alt="" />
               <div>
-                <h4>হঠাৎ ছাই হওয়া এক নক্ষত্র</h4>
-                <p>Aug 18,2024</p>
+                <h4>{data?.title}</h4>
+                <p>{moment(data?.createdAt).format("ll")}</p>
               </div>
             </div>
           ))}
@@ -46,7 +64,7 @@ const Footer = () => {
 
         <div className="popular-category-container">
           <h3>Popular Category</h3>
-          {result?.map((data) => (
+          {counts?.map((data) => (
             <div>
               <p>{data.categoryName}</p>
               <span>{data.count}</span>

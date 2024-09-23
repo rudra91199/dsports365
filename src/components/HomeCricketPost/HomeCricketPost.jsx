@@ -5,12 +5,23 @@ import trending4 from "../../assets/images/Trending Image/shakib.jpg";
 import trending5 from "../../assets/images/Trending Image/DeanHeadley.jpg";
 import moment from "moment";
 import { useCleanAndTruncateText } from "../../hooks/useCleanAndTruncateText";
+import { useNavigate } from "react-router-dom";
+import { useIncreaseCount } from "../../hooks/useIncreaseCount";
 
 const HomeCricketPost = ({ news }) => {
+  const navigate = useNavigate();
   return (
     <div className="homeCricketPost">
       {news?.slice(0, 2).map((d) => (
-        <div className="home-cric-two-post">
+        <div
+          className="home-cric-two-post"
+          onClick={() => {
+            useIncreaseCount(d?._id, d?.count);
+            navigate(`/news/${d?.slug}`, {
+              state: d?._id,
+            });
+          }}
+        >
           <div className="image-container">
             <img src={d.image.url} alt="" />
             <span>ক্রিকেট</span>
@@ -32,7 +43,14 @@ const HomeCricketPost = ({ news }) => {
 
       <div className="home-cric-remain-post">
         {news?.slice(2, 6).map((d) => (
-          <div>
+          <div
+            onClick={() => {
+              useIncreaseCount(d?._id, d?.count);
+              navigate(`/news/${d?.slug}`, {
+                state: d?._id,
+              });
+            }}
+          >
             <img src={d?.image.url} alt="" />
             <div>
               <h4>{d?.title}</h4>
@@ -53,7 +71,6 @@ const HomeCricketPost = ({ news }) => {
           </div>
         ))}
       </div> */}
-
     </div>
   );
 };
