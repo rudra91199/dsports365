@@ -186,5 +186,35 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.header .searchedProducts-container {
+  padding: 20px;
+  box-shadow: 0 0px 8px rgba(0, 0, 0, 0.3);
+  background-color: white;
+}
+
+.header .searchedProducts-container > p {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
 .header .searchedProducts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.header .searchedProducts img {
+  width: 100%;
+}
+
+.header .searchedProducts span {
+  font-size: 15px;
+}
+
+.header .searchedProducts-container button {
+  border: none;
+  font-size: 14px;
+  display: block;
+  width: fit-content;
+  margin: 20px auto 0;
 }
