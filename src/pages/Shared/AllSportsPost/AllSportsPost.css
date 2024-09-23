@@ -32,28 +32,29 @@
 .allSportsPost .banner span {
   color: white;
   padding: 3px 10px 2px;
-  margin-right: 5px;
-  font-size: 12px;
+  margin-right: 10px;
+  font-size: 13px;
   border-radius: 2px;
-  font-weight: 600;
+  font-weight: 400;
   transition: background-color 0.2s ease;
   cursor: pointer;
+  font-weight: 500;
 }
 
 .allSportsPost .banner span:first-child {
-  background-color: var(--accent);
+  background-color: var(--accent-tint-20);
 }
 
 .allSportsPost .banner span:nth-child(2) {
-    background-color: var(--accent-shade-20);
-}
-
-.allSportsPost .banner span:nth-child(3) {
     background-color: var(--accent-tint-30);
 }
 
+.allSportsPost .banner span:nth-child(3) {
+    background-color: var(--accent-tint-40);
+}
+
 .allSportsPost .banner span:first-child:hover, .allSportsPost .banner span:nth-child(2):hover, .allSportsPost .banner span:nth-child(3):hover{
-  background-color: var(--accent-shade-60);
+  background-color: var(--accent-shade-40);
 
 }
 

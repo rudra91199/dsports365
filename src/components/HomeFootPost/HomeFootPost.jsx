@@ -13,7 +13,7 @@ const HomeFootPost = ({ news }) => {
         <div
           className="homeFootPost"
           onClick={() => {
-            useIncreaseCount(data?._id, data?.count);
+            useIncreaseCount(data?._id);
             navigate(`/news/${data?.slug}`);
           }}
         >
