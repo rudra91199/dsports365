@@ -3,9 +3,17 @@ import federer from "../../../assets/images/Trending Image/RogerFederer2.jpg";
 import trending3 from "../../../assets/images/Trending Image/ShaunTait.jpg";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
+import { useFetch } from "../../../hooks/useFetch";
 
 const Footer = () => {
   const postNumbers = [1, 2, 3];
+
+  const { data: { result } = {}, isLoading } = useFetch(
+    "posts/getNewsCountByCategory",
+    ["newsCounts"]
+  );
+
+  console.log(result);
 
   return (
     <div className="footer-container">
@@ -38,24 +46,12 @@ const Footer = () => {
 
         <div className="popular-category-container">
           <h3>Popular Category</h3>
-          <div>
-            <p>ক্রিকেট</p>
-            <span>20</span>
-          </div>
-          <div>
-            <p>
-              ফুটবল
-            </p>
-              <span>20</span>
-          </div>
-          <div>
-            <p>টেনিস</p>
-            <span>20</span>
-          </div>
-          <div>
-            <p>অ্যাথলেটিক্স</p>
-            <span>20</span>
-          </div>
+          {result?.map((data) => (
+            <div>
+              <p>{data.categoryName}</p>
+              <span>{data.count}</span>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -69,7 +65,9 @@ const Footer = () => {
             quisquam nesciunt suscipit temporibus adipisci pariatur, earum
             voluptates odio cumque recusandae.
           </p>
-          <p>Contact Us: <span>contact@gmail.com</span></p>
+          <p>
+            Contact Us: <span>contact@gmail.com</span>
+          </p>
         </div>
         <div className="footer-social">
           <h3>Follow Us</h3>

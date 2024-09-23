@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./allSportsPost.css";
 import { useFetch } from "../../../hooks/useFetch";
 import { useState } from "react";
@@ -6,10 +6,11 @@ import { useState } from "react";
 const AllSportsPost = () => {
   const { category, subcategory } = useParams();
   const [page, setPage] = useState(0);
+  const navigate= useNavigate()
 
   const { data: { result, count } = {}, isLoading } = useFetch(
-    `/posts/allNews?category=${category}&subcategory=${subcategory}&page=${page}&limit=${4}`,
-    ["cricketNews", category, subcategory]
+    `/posts/allNews?category=${category}&subcategory=${subcategory || ""}&page=${page}&limit=${10}`,
+    ["allSportsNews", category, subcategory]
   );
 
   const catSub = {
@@ -17,6 +18,7 @@ const AllSportsPost = () => {
     others: ["টেনিস", "অ্যাথলেটিক্স", "অন্যান্য"],
   };
 
+  console.log(result)
   return (
     <div
       className={`allSportsPost 
@@ -29,8 +31,8 @@ const AllSportsPost = () => {
         <h2 className="container">{category}</h2>
         <div className="subs container">
           {category == "আরও খেলা"
-            ? catSub.others.map((sub) => <span>{sub}</span>)
-            : catSub.cricFoot.map((sub) => <span>{sub}</span>)}
+            ? catSub.others.map((sub) => <span onClick={() => navigate(`/all-sports/${category}/${sub}`)}>{sub}</span>)
+            : catSub.cricFoot.map((sub) => <span onClick={() => navigate(`/all-sports/${category}/${sub}`)}>{sub}</span>)}
         </div>
       </div>
 
