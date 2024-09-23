@@ -7,6 +7,8 @@ import { useIncreaseCount } from "../../hooks/useIncreaseCount";
 
 const HomeFootPost = ({ news }) => {
   const navigate = useNavigate();
+  
+
   return (
     <div className="homeFootPost-container">
       {news?.map((data, i) => (
