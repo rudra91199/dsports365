@@ -5,10 +5,13 @@ import { useFetch } from "../../hooks/useFetch";
 import moment from "moment";
 import { useCleanAndTruncateText } from "../../hooks/useCleanAndTruncateText";
 import ReactPaginate from "react-paginate";
+import { useNavigate } from "react-router-dom";
+import { useIncreaseCount } from "../../hooks/useIncreaseCount";
 
 const LatestNews = () => {
   const [cricketNav, setCricketNav] = useState("");
   const [page, setPage] = useState(0);
+  const navigate = useNavigate();
 
   const { data: { result, count } = {}, isLoading } = useFetch(
     `/posts/allNews?exclude=${"সাক্ষাৎকার"}&page=${page}&limit=${8}`,
@@ -23,7 +26,6 @@ const LatestNews = () => {
     setPage(event.selected);
   };
 
-
   return (
     <div className="latestNewsWrapper homeWrapper">
       <div className="leftWrapper">
@@ -33,7 +35,15 @@ const LatestNews = () => {
 
         <div className="latestPostContainer">
           {result?.map((data) => (
-            <div className="home-cric-two-post">
+            <div
+              className="home-cric-two-post"
+              onClick={() => {
+                useIncreaseCount(data?._id, data?.count);
+                navigate(`/news/${data?.slug}`, {
+                  state: data?._id,
+                });
+              }}
+            >
               <div className="image-container">
                 <img src={data.image.url} alt="" />
                 <span>{data.category}</span>
@@ -63,10 +73,9 @@ const LatestNews = () => {
           pageCount={totalPages}
           previousLabel="<"
           activeLinkClassName="currentPage"
-          disabledLinkClassName='disabledPage'
+          disabledLinkClassName="disabledPage"
           renderOnZeroPageCount={null}
         />
-
       </div>
 
       <div className="rightWrapper"></div>

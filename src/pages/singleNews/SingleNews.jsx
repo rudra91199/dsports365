@@ -2,19 +2,18 @@ import { useEffect, useState } from "react";
 import "./singleNews.css";
 import adminImg from "../../assets/Debbarata Mukherjee.jpg";
 import { format } from "date-fns";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 
 const SingleNews = () => {
   const { slug } = useParams();
-  console.log(slug);
-
+  const state = useLocation().state;
+  console.log(state);
   const {
     data: { result, count } = {},
     isLoading,
     refetch,
-  } = useFetch(`/posts/getSingleNews?slug=${slug}`, ["singleNews", slug]);
-
+  } = useFetch(`/posts/getSingleNews?id=${state}`, ["singleNews", state]);
 
   const date = result?.createdAt && new Date(result?.createdAt);
 
@@ -28,7 +27,9 @@ const SingleNews = () => {
   return (
     <div className="singleNews container">
       <div>
-        <p className="category">{result?.category} {result?.count}</p>
+        <p className="category">
+          {result?.category} {result?.count}
+        </p>
         <p className="title">{result?.title}</p>
         {result?.slogan && <p className="slogan">{result?.slogan}</p>}
         <div className="createdBy">

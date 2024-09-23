@@ -15,8 +15,10 @@ const HomeFootPost = ({ news }) => {
         <div
           className="homeFootPost"
           onClick={() => {
-            useIncreaseCount(data?._id);
-            navigate(`/news/${data?.slug}`);
+            useIncreaseCount(data?._id, data?.count);
+            navigate(`/news/${data?.slug}`, {
+              state: data?._id,
+            });
           }}
         >
           <img src={data?.image.url} alt="" />
