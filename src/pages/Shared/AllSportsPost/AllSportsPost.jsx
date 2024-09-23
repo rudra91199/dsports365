@@ -18,10 +18,9 @@ const AllSportsPost = () => {
     others: ["টেনিস", "অ্যাথলেটিক্স", "অন্যান্য"],
   };
 
-  console.log(result)
   return (
     <div
-      className={`allSportsPost 
+      className={`allSportsPostsContainer
       ${category == "ক্রিকেট" && "cricket-posts-layout"} 
       ${category == "ফুটবল" && "football-posts-layout"} 
       ${category == "আরও খেলা" && "others-posts-layout"}
@@ -37,6 +36,7 @@ const AllSportsPost = () => {
       </div>
 
       <div className="homeWrapper container">
+
         <div className="leftWrapper">
             
         </div>

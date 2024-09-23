@@ -1,4 +1,4 @@
-.allSportsPost .banner {
+.allSportsPostsContainer .banner {
   height: 445px;
   background-size: cover !important;
   background-repeat: no-repeat !important;
@@ -9,14 +9,14 @@
   flex-direction: column;
 }
 
-.allSportsPost .banner::after {
+.allSportsPostsContainer .banner::after {
   content: "";
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.allSportsPost .banner h2 {
+.allSportsPostsContainer .banner h2 {
   color: white;
   font-size: 36px;
   z-index: 1;
@@ -24,12 +24,12 @@
   font-weight: 600;
 }
 
-.allSportsPost .banner .subs {
+.allSportsPostsContainer .banner .subs {
   z-index: 2;
   margin-block: 10px;
 }
 
-.allSportsPost .banner span {
+.allSportsPostsContainer .banner span {
   color: white;
   padding: 3px 10px 2px;
   margin-right: 10px;
@@ -41,23 +41,23 @@
   font-weight: 500;
 }
 
-.allSportsPost .banner span:first-child {
+.allSportsPostsContainer .banner span:first-child {
   background-color: var(--accent-tint-20);
 }
 
-.allSportsPost .banner span:nth-child(2) {
+.allSportsPostsContainer .banner span:nth-child(2) {
     background-color: var(--accent-tint-30);
 }
 
-.allSportsPost .banner span:nth-child(3) {
+.allSportsPostsContainer .banner span:nth-child(3) {
     background-color: var(--accent-tint-40);
 }
 
-.allSportsPost .banner span:first-child:hover, .allSportsPost .banner span:nth-child(2):hover, .allSportsPost .banner span:nth-child(3):hover{
+.allSportsPostsContainer .banner span:first-child:hover, .allSportsPostsContainer .banner span:nth-child(2):hover, .allSportsPostsContainer .banner span:nth-child(3):hover{
   background-color: var(--accent-shade-40);
 
 }
 
-.allSportsPost:is(.cricket-posts-layout) .banner {
+.allSportsPostsContainer:is(.cricket-posts-layout) .banner {
   background: url("../../../assets/images/Banner-Image/CricketBanner.jpg");
 }
