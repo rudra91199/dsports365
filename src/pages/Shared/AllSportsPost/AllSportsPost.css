@@ -24,14 +24,36 @@
   font-weight: 600;
 }
 
-.allSportsPost .banner .subs{
-    z-index: 2;
-    margin-top: 5px;
+.allSportsPost .banner .subs {
+  z-index: 2;
+  margin-block: 10px;
 }
 
-.allSportsPost .banner span{
-    color: white;
-    padding: 4px 4px 2px;
+.allSportsPost .banner span {
+  color: white;
+  padding: 3px 10px 2px;
+  margin-right: 5px;
+  font-size: 12px;
+  border-radius: 2px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.allSportsPost .banner span:first-child {
+  background-color: var(--accent);
+}
+
+.allSportsPost .banner span:nth-child(2) {
+    background-color: var(--accent-shade-20);
+}
+
+.allSportsPost .banner span:nth-child(3) {
+    background-color: var(--accent-tint-30);
+}
+
+.allSportsPost .banner span:first-child:hover, .allSportsPost .banner span:nth-child(2):hover, .allSportsPost .banner span:nth-child(3):hover{
+  background-color: var(--accent-shade-60);
 
 }
 

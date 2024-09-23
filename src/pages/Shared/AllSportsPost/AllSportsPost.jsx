@@ -19,7 +19,7 @@ const AllSportsPost = () => {
 
   return (
     <div
-      className={`allSportsPost
+      className={`allSportsPost 
       ${category == "ক্রিকেট" && "cricket-posts-layout"} 
       ${category == "ফুটবল" && "football-posts-layout"} 
       ${category == "আরও খেলা" && "others-posts-layout"}
@@ -31,6 +31,16 @@ const AllSportsPost = () => {
           {category == "আরও খেলা"
             ? catSub.others.map((sub) => <span>{sub}</span>)
             : catSub.cricFoot.map((sub) => <span>{sub}</span>)}
+        </div>
+      </div>
+
+      <div className="homeWrapper container">
+        <div className="leftWrapper">
+            
+        </div>
+
+        <div className="rightWrapper">
+
         </div>
       </div>
     </div>
