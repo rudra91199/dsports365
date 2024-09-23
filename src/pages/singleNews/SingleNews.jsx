@@ -2,41 +2,48 @@ import { useEffect, useState } from "react";
 import "./singleNews.css";
 import adminImg from "../../assets/Debbarata Mukherjee.jpg";
 import { format } from "date-fns";
+import { useParams } from "react-router-dom";
+import { useFetch } from "../../hooks/useFetch";
 
 const SingleNews = () => {
-  const [news, setNews] = useState({});
+  const { slug } = useParams();
+  console.log(slug);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/posts/post/66ec2af3e5dc6a6682caaff4")
-      .then((res) => res.json())
-      .then((data) => setNews(data));
-  }, []);
+  const {
+    data: { result, count } = {},
+    isLoading,
+    refetch,
+  } = useFetch(`/posts/getSingleNews?slug=${slug}`, ["singleNews", slug]);
 
-  console.log(news)
 
-  const date = news.createdAt && new Date(news.createdAt);
+  const date = result?.createdAt && new Date(result?.createdAt);
 
   const formatedDate = date && format(date, "MMMM dd, yyyy");
+
+  console.log(result);
+  useEffect(() => {
+    refetch();
+  }, [slug]);
 
   return (
     <div className="singleNews container">
       <div>
-        <p className="category">{news.category}</p>
-        <p className="title">{news.title}</p>
-        {news.slogan && <p className="slogan">{news.slogan}</p>}
+        <p className="category">{result?.category} {result?.count}</p>
+        <p className="title">{result?.title}</p>
+        {result?.slogan && <p className="slogan">{result?.slogan}</p>}
         <div className="createdBy">
-          <img src={adminImg} alt="" />{" "}
+          <img src={result?.writer.image.url} alt="" />{" "}
           <p>
-            By <span>Debbrata Mukherjee</span>
+            By <span>{result?.writer.name}</span>
           </p>
           <p className="time">{formatedDate}</p>
         </div>
         <div className="imageWrapper">
-          <img src={news?.image?.url} alt="" />
+          <img src={result?.image?.url} alt="" />
         </div>
         <div
           className="desc"
-          dangerouslySetInnerHTML={{ __html: news.desc }}
+          dangerouslySetInnerHTML={{ __html: result?.desc }}
         />
       </div>
       <div className="sidebar"></div>

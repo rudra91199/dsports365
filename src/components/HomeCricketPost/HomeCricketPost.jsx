@@ -31,7 +31,7 @@ const HomeCricketPost = ({ news }) => {
       ))}
 
       <div className="home-cric-remain-post">
-        {news?.slice(2, 4).map((d) => (
+        {news?.slice(2, 6).map((d) => (
           <div>
             <img src={d?.image.url} alt="" />
             <div>
@@ -42,7 +42,7 @@ const HomeCricketPost = ({ news }) => {
         ))}
       </div>
 
-      <div className="home-cric-remain-post">
+      {/* <div className="home-cric-remain-post">
         {news?.slice(4, 6).map((d) => (
           <div>
             <img src={d?.image.url} alt="" />
@@ -52,7 +52,7 @@ const HomeCricketPost = ({ news }) => {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
 
     </div>
   );

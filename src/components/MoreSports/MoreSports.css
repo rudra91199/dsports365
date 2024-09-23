@@ -25,8 +25,8 @@
 }
 
 .moreSportsFirst .home-cricket-content p:nth-child(2){
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 800;
+    font-size: 12px;
     margin-bottom: 10px;
 }
 
@@ -37,7 +37,6 @@
 .moreSportsRemain {
   display: flex;
   gap: 30px;
-  /* height: 70px; */
 }
 
 .moreSportsRemain img {
@@ -48,4 +47,9 @@
 
 .moreSportsRemain h4 {
     font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.moreSportsRemain p{
+  font-size: 12px;
 }

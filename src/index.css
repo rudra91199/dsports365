@@ -7,6 +7,24 @@
     font-family: "Noto Sans Bengali", sans-serif;
 }
 
+:root{
+    --accent:#c90219;
+    --accent-shade-10:#b50217;
+    --accent-shade-20:#a10214;
+    --accent-shade-30:#8d0112;
+    --accent-shade-40:#79010f;
+    --accent-shade-50:#65010d;
+    --accent-shade-60:#50010a;
+    --accent-shade-70:#3c0107;
+    --accent-tint-10:#ce1b30;
+    --accent-tint-20:#d43547;
+    --accent-tint-30:#d94e5e;
+    --accent-tint-40:#df6775;
+    --accent-tint-50:#e4818c;
+    --accent-tint-60:#e99aa3;
+    --accent-tint-70:#efb3ba;
+}
+
 .container {
     width: 1050px;
     margin: 0 auto;
@@ -17,13 +35,31 @@ a {
     color: black;
 }
 
+
 .homeWrapper{
     display: flex;
     gap: 30px;
 }
 
 .image-container{
-    
+    position: relative;
+}
+
+.image-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-container span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    padding: 3px 5px;
 }
 
 .leftWrapper{
@@ -58,13 +94,42 @@ a {
     color: rgba(128, 128, 128, 0.5);
 }
 
-.leftWrapper .pagination-number{
-    padding: 5px 10px 3px;
-    border: 1px solid rgba(128, 128, 128, 0.4);
-    border-radius: 3px;
-    color: rgba(128, 128, 128, 0.7);
-    margin-right: 5px;
+
+
+.leftWrapper ul[aria-label="Pagination"]{
+    display: flex;
+    gap: 10px;
+}
+
+.leftWrapper ul[aria-label="Pagination"] li{
+    list-style: none;
+}
+
+.leftWrapper ul[aria-label="Pagination"] a{
     cursor: pointer;
-    font-weight: 600;
+    padding: 5px 10px 3px;
+    border: 1px solid rgba(128, 128, 128, 0.7);
+    border-radius: 3px;
+    cursor: pointer;
+    color: rgba(128, 128, 128, 0.7);
+    font-weight: 700;
     font-size: 14px;
+}
+
+.leftWrapper ul[aria-label="Pagination"] a:hover{
+    border: 1px solid  rgb(255, 45, 7,0.8);
+    background-color:  rgb(255, 59, 25, 0.8);
+    color: white !important;
+}
+
+.leftWrapper ul[aria-label="Pagination"] a:is(.currentPage){
+    color: rgba(255, 0, 0, 0.8);
+    border: 1px solid  rgba(255, 44, 7, 0.8);
+}
+
+.leftWrapper ul[aria-label="Pagination"] a:is(.disabledPage){
+    pointer-events: none;
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    color: rgba(128, 128, 128, 0.4);
+
 }

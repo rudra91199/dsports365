@@ -1,11 +1,21 @@
+import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
+import { useFetch } from "../../../hooks/useFetch";
+import moment from "moment";
 
 const OtherSportsDropdown = () => {
+  const [cricketNav, setCricketNav] = useState("");
+  const [page, setPage] = useState(0);
+
+  const { data: { result, count } = {}, isLoading } = useFetch(
+    `/posts/allNews?category=${"আরও খেলা"}&subcategory=${cricketNav}&page=${page}&limit=${4}`,
+    ["othersNavNews", cricketNav, page]
+  );
   return (
     <div className="dropdown other-sports-dropdown">
       <NavLink
-        to={"/other-sports"}
+                to={"/all-sports/আরও খেলা"}
         className={({ isActive }) => `nav-cricket ${isActive && "nav-active"}`}
       >
         আরও খেলা <IoIosArrowDown />
@@ -13,51 +23,49 @@ const OtherSportsDropdown = () => {
 
       <div className={`nav-dropdown other-sports-dropdown-content`}>
         <div className="subcategories">
-          <NavLink to={"/football"}>টেনিস </NavLink>
-          <NavLink to={"/football"}>অ্যাথলেটিক্স </NavLink>
-          <NavLink to={"/football"}>অন্যান্য </NavLink>
+          <NavLink
+            to={"/all-sports-posts"}
+            onMouseOver={() => setCricketNav("")}
+            className={`${cricketNav == "" && "hoveredCat"}`}
+          >
+            অল
+          </NavLink>
+          <NavLink
+            to={"/all-sports-posts"}
+            onMouseOver={() => setCricketNav("টেনিস")}
+            className={`${cricketNav == "টেনিস" && "hoveredCat"}`}
+          >
+            টেনিস
+          </NavLink>
+          <NavLink
+            to={"/all-sports-posts"}
+            onMouseOver={() => setCricketNav("অ্যাটলেটিক্স")}
+            className={`${cricketNav == "অ্যাথলেটিক্স" && "hoveredCat"}`}
+          >
+            অ্যাথলেটিক্স
+          </NavLink>
+          <NavLink
+            to={"/all-sports-posts"}
+            onMouseOver={() => setCricketNav("অন্যান্য খেলা")}
+            className={`${cricketNav == "অন্যান্য খেলা" && "hoveredCat"}`}
+          >
+            অন্যান্য
+          </NavLink>
         </div>
         <div className="suggested-news">
-        <div className="news">
-            <img
-              src="https://khela71.com/wp-content/uploads/2024/09/Mehidy-Hasan-Miraz-Khela71-1.jpg"
-              alt=""
-            />
-            <div className="news-content">
-              <Link>মেহেদী হাসান মিরাজ, দ্য রাইজ অব অ্যান অলরাউন্ডার</Link>
-              <p>September 09, 2024</p>
+          {result?.map((d) => (
+            <div className="news">
+              <div className="image-container">
+                <img src={d?.image.url} alt="" />
+                <span>{d.category}</span>
+              </div>
+
+              <div className="news-content">
+                <h4>{d.title}</h4>
+                <p>{moment(d?.createdAt).format("ll")}</p>
+              </div>
             </div>
-          </div>
-          <div className="news">
-            <img
-              src="https://khela71.com/wp-content/uploads/2024/09/Littton-Century-138-khela71.jpg"
-              alt=""
-            />
-            <div className="news-content">
-              <Link>লিটন ফিচারিং দ্য ভিঞ্চি কোড</Link>
-              <p>September 09, 2024</p>
-            </div>
-          </div>
-          <div className="news">
-            <img
-              src="https://khela71.com/wp-content/uploads/2024/09/rishad-hossain-khela71-2.jpg"
-              alt=""
-            />
-            <div className="news-content">
-              <Link>কবজি জাদুর বাকবদল</Link>
-              <p>September 09, 2024</p>
-            </div>
-          </div>
-          <div className="news">
-            <img
-              src="https://khela71.com/wp-content/uploads/2024/09/Jisan-Alam-Khela71.jpg"
-              alt=""
-            />
-            <div className="news-content">
-              <Link>ভারতের বিপক্ষে দলে থাকবেন জিসান আলম?</Link>
-              <p>September 09, 2024</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

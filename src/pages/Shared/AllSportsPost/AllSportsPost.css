@@ -1,0 +1,40 @@
+.allSportsPost .banner {
+  height: 445px;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: 0 40% !important;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.allSportsPost .banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.allSportsPost .banner h2 {
+  color: white;
+  font-size: 36px;
+  z-index: 1;
+  letter-spacing: -1px;
+  font-weight: 600;
+}
+
+.allSportsPost .banner .subs{
+    z-index: 2;
+    margin-top: 5px;
+}
+
+.allSportsPost .banner span{
+    color: white;
+    padding: 4px 4px 2px;
+
+}
+
+.allSportsPost:is(.cricket-posts-layout) .banner {
+  background: url("../../../assets/images/Banner-Image/CricketBanner.jpg");
+}

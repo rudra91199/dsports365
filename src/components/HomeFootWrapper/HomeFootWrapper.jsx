@@ -47,7 +47,7 @@ const HomeFootWrapper = () => {
         <button disabled={page == 0} onClick={() => setPage(page - 1)}>
           <IoIosArrowBack />
         </button>
-        <button disabled={(page + 1 )* 6 > count} onClick={() => setPage(page + 1)}>
+        <button disabled={(page + 1 )* 4 >= count} onClick={() => setPage(page + 1)}>
           <IoIosArrowForward />
         </button>
       </div>

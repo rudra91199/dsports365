@@ -23,7 +23,6 @@ const LatestNews = () => {
     setPage(event.selected);
   };
 
-  console.log(page);
 
   return (
     <div className="latestNewsWrapper homeWrapper">
@@ -63,8 +62,11 @@ const LatestNews = () => {
           pageRangeDisplayed={1}
           pageCount={totalPages}
           previousLabel="<"
+          activeLinkClassName="currentPage"
+          disabledLinkClassName='disabledPage'
           renderOnZeroPageCount={null}
         />
+
       </div>
 
       <div className="rightWrapper"></div>

@@ -20,7 +20,6 @@ const HomeCricketWrapper = () => {
     ["cricketNews", cricketNav, page]
   );
 
-  console.log(result, count);
 
   return (
     <div className="homeCricketContainer homeWrapper">
@@ -53,7 +52,7 @@ const HomeCricketWrapper = () => {
           <IoIosArrowBack />
         </button>
         <button
-          disabled={(page + 1 )* 6 > count}
+          disabled={(page + 1 )* 6 >= count}
           onClick={() => setPage(page + 1)}
         >
           <IoIosArrowForward />

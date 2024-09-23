@@ -1,11 +1,28 @@
+import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
+import { useFetch } from "../../../hooks/useFetch";
+import moment from "moment";
 
 const FootballDropdown = () => {
+  const [cricketNav, setCricketNav] = useState("");
+  const [page, setPage] = useState(0);
+
+  const { data: { result, count } = {}, isLoading } = useFetch(
+    `/posts/allNews?category=${"ফুটবল"}&subcategory=${cricketNav}&page=${page}&limit=${4}`,
+    ["footballNavNews", cricketNav, page]
+  );
+
+  const handleCatPage = (cat) => {
+    setCricketNav(cat);
+    setPage(0);
+  };
+
   return (
     <div className="dropdown football-dropdown">
       <NavLink
-        to={"/football"}
+        to={"/all-sports/ফুটবল"}
+
         className={({ isActive }) => `nav-cricket ${isActive && "nav-active"}`}
       >
         ফুটবল <IoIosArrowDown />
@@ -13,50 +30,42 @@ const FootballDropdown = () => {
 
       <div className={`nav-dropdown football-dropdown-content`}>
         <div className="subcategories">
-          <NavLink to={"/football"}>আন্তর্জাতিক </NavLink>
-          <NavLink to={"/football"}>জাতীয় </NavLink>
+          <NavLink
+            to={"/all-sports-posts"}
+            onMouseOver={() => setCricketNav("")}
+            className={`${cricketNav == "" && "hoveredCat"}`}
+          >
+            অল
+          </NavLink>
+          <NavLink
+            to={"/all-sports-posts"}
+            onMouseOver={() => setCricketNav("জাতীয়")}
+            className={`${cricketNav == "জাতীয়" && "hoveredCat"}`}
+          >
+            জাতীয়
+          </NavLink>
+          <NavLink
+            to={"/all-sports-posts"}
+            onMouseOver={() => setCricketNav("আন্তর্জাতিক")}
+            className={`${cricketNav == "আন্তর্জাতিক" && "hoveredCat"}`}
+          >
+            আন্তর্জাতিক
+          </NavLink>
         </div>
         <div className="suggested-news">
-        <div className="news">
-            <img
-              src="https://khela71.com/wp-content/uploads/2024/09/Mehidy-Hasan-Miraz-Khela71-1.jpg"
-              alt=""
-            />
-            <div className="news-content">
-              <Link>মেহেদী হাসান মিরাজ, দ্য রাইজ অব অ্যান অলরাউন্ডার</Link>
-              <p>September 09, 2024</p>
+          {result?.map((d) => (
+            <div className="news">
+              <div className="image-container">
+                <img src={d?.image.url} alt="" />
+                <span>{d.category}</span>
+              </div>
+
+              <div className="news-content">
+                <h4>{d.title}</h4>
+                <p>{moment(d?.createdAt).format("ll")}</p>
+              </div>
             </div>
-          </div>
-          <div className="news">
-            <img
-              src="https://khela71.com/wp-content/uploads/2024/09/Littton-Century-138-khela71.jpg"
-              alt=""
-            />
-            <div className="news-content">
-              <Link>লিটন ফিচারিং দ্য ভিঞ্চি কোড</Link>
-              <p>September 09, 2024</p>
-            </div>
-          </div>
-          <div className="news">
-            <img
-              src="https://khela71.com/wp-content/uploads/2024/09/rishad-hossain-khela71-2.jpg"
-              alt=""
-            />
-            <div className="news-content">
-              <Link>কবজি জাদুর বাকবদল</Link>
-              <p>September 09, 2024</p>
-            </div>
-          </div>
-          <div className="news">
-            <img
-              src="https://khela71.com/wp-content/uploads/2024/09/Jisan-Alam-Khela71.jpg"
-              alt=""
-            />
-            <div className="news-content">
-              <Link>ভারতের বিপক্ষে দলে থাকবেন জিসান আলম?</Link>
-              <p>September 09, 2024</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

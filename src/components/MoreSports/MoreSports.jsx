@@ -8,7 +8,7 @@ import moment from "moment";
 import { useCleanAndTruncateText } from "../../hooks/useCleanAndTruncateText";
 
 const MoreSports = () => {
-  const [cricketNav, setCricketNav] = useState("টেনিস");
+  const [cricketNav, setCricketNav] = useState("");
   const [page, setPage] = useState(0);
 
   const handleCatPage = (cat) => {
@@ -16,7 +16,7 @@ const MoreSports = () => {
     setPage(0);
   };
   const { data: { result, count } = {}, isLoading } = useFetch(
-    `/posts/allNews?category=${cricketNav}&page=${page}&limit=${5}`,
+    `/posts/allNews?category=${"আরও খেলা"}&subcategory=${cricketNav}&page=${page}&limit=${5}`,
     ["othersNews", cricketNav, page]
   );
 
@@ -28,6 +28,12 @@ const MoreSports = () => {
           <p>আরো খেলা</p>
 
           <p
+            onClick={() => handleCatPage("")}
+            className={`${cricketNav == "" && "selected"}`}
+          >
+            অল
+          </p>
+          <p
             onClick={() => handleCatPage("টেনিস")}
             className={`${cricketNav == "টেনিস" && "selected"}`}
           >
@@ -35,7 +41,7 @@ const MoreSports = () => {
           </p>
 
           <p
-            onClick={() => handleCatPage("অ্যাথলেটিক্স")}
+            onClick={() => handleCatPage("অ্যাটলেটিক্স")}
             className={`${cricketNav == "অ্যাথলেটিক্স" && "selected"}`}
           >
             অ্যাথলেটিক্স
@@ -85,7 +91,7 @@ const MoreSports = () => {
           <IoIosArrowBack />
         </button>
         <button
-          disabled={(page + 1) * 6 > count}
+          disabled={(page + 1) * 5 >= count}
           onClick={() => setPage(page + 1)}
         >
           <IoIosArrowForward />
