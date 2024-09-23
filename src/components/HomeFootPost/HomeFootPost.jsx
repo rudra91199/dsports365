@@ -19,7 +19,7 @@ const HomeFootPost = ({ news }) => {
         >
           <img src={data?.image.url} alt="" />
           <div className="homeFootPostContent">
-            <h2>{data?.title}{data?.count}</h2>
+            <h2>{data?.title}</h2>
             <p>
               {data?.writer.name} -{" "}
               <span>{moment(data?.createdAt).format("lll")}</span>
